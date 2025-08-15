@@ -1,0 +1,10 @@
+( Station
+components: {
+	#include "GameDisplay.epp"
+	#include "GameController.epp"
+
+	
+	}
+	
+
+)

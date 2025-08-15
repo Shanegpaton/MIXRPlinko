@@ -1,0 +1,103 @@
+pegs: {	// Top Row
+	( Circle
+		radius: .3
+		slices: 32
+		filled: true
+		vertices:
+			{ [ -8 5] } 
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ -4 5] } 
+		filled: true
+		)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 0 5] } 
+		filled: true
+		)
+		( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 4 5] } 
+		filled: true
+		)
+		( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 8 5] } 
+		filled: true
+		)
+	// 2nd row
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ -6 1] } 
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ -2 1] } 
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 2 1] } 
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 6 1] } 
+		filled: true
+	)
+
+	// 3rd row
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ -8 -3 ] } 
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ -4 -3 ] } 
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ -0 -3 ] } 
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 4 -3 ] } 
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 8 -3 ] } 
+		filled: true
+	)
+}

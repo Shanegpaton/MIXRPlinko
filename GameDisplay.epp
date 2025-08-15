@@ -1,0 +1,196 @@
+GameDisplay: ( GameDisplay
+	normalFont: font01
+	fonts: {
+    font01: ( BitmapFont
+                fontPosition: [ -9.5 9.5 ]
+                fontWidth: 0.462
+                fontHeight: 0.798
+                bitmapWidth: 11
+                bitmapHeight: 19
+                characterSpacing: 0.462
+                lineSpacing: 0.798
+                path: "../../MIXR-DATA/FONTs/11x19/normal/"
+            )
+  }
+	colorTable: {
+    black:     ( rgba 0 0 0 )
+    red:       ( rgb 1 0 0 )
+    green:     ( rgb 0 1 0 )
+    yellow:    ( rgb 1 1 0 )
+    blue:      ( rgb 0 0 1 )
+    magenta:   ( rgb 1 0 1 )
+    cyan:      ( rgb 0 1 1 )
+    white:     ( rgb 1 1 1 )
+	purple:    (rgb .5 0 .5)
+	pastelMagenta: (rgb .95 .61 .73)
+  }
+
+	 textures: {
+  plinkoBackground:   ( BitmapTexture width: 512 height: 256 path: MIXR_DATA_TEXTURES_PATH file: "plinkoBackground.bmp" )
+
+  }
+
+	left:		-10
+	right:		 10
+	bottom:		-10
+	top:	 	 10
+
+	vpWidth:     1000
+	vpHeight:	 1000
+
+	page: p1
+	pages: {
+	p1: (Page
+	pagingEvent: {p: p2}
+	components: {
+		(AnimatedPolygon
+		path: "./background"
+		startFrame: 1
+		totalFrames: 23
+		vertices:
+             { [ 10.5  10.5 ] [ -10.5  10.5 ]
+            [ -10.5 -10.5 ] [  10.5 -10.5 ] }
+         texCoord: {
+                [  1.0  1.0 ]
+                [  0.0  1.0 ]
+                [  0.0  0.0 ]
+                [  1.0  0.0 ]
+            }
+		)
+		
+		(Button
+		eventId: 3000
+		selectName: 1
+		components: {
+			( Polygon
+			color: magenta
+			transform: { ( Translation 5 -6 )  }
+			vertices:
+				{ [ 3.5  1.5] [ -3.5  1.5]
+				[ -3.5 -1.5] [  3.5 -1.5] } 
+			) // polygon
+			} // components
+		) // button
+		( AsciiText selectName: 502 transform: { ( Translation 4 -6.5 ) } color: blue text: "Play" )
+		}
+	)
+	p2: (Page
+	pagingEvent: {p: p1}
+	components: {
+	( Polygon
+	texture: plinkoBackground
+	vertices:
+             { [ 10.5  10.5 ] [ -10.5  10.5 ]
+            [ -10.5 -10.5 ] [  10.5 -10.5 ] }
+			texture: plinkoBackground 
+                      texCoord: {
+                [  1.0  1.0 ]
+                [  0.0  1.0 ]
+                [  0.0  0.0 ]
+                [  1.0  0.0 ]
+            }
+	)
+	
+	DropBall: ( Button
+		eventId: 3001
+		selectName: 2
+		components: {
+			( Polygon
+			color: magenta
+			transform: { ( Translation -9 9 )  }
+			vertices:
+				{ [ 1  1] [ -1  1 ]
+				[ -1 -1 ] [  1 -1] } 
+			) // polygon
+			} // components
+		) // button
+	ChangeColor: ( Button
+		eventId: 3002
+		selectName: 3
+		components: {
+			( Polygon
+			color: red
+			transform: { ( Translation -6.5 9 )  }
+			vertices:
+				{ [ 1  1] [ -1  1 ]
+				[ -1 -1 ] [  1 -1] } 
+			) // polygon
+			} // components
+		) // button
+	Reset: ( Button
+		eventId: 3003
+		selectName: 4
+		components: {
+			( Polygon
+			color: pastelMagenta
+			transform: { ( Translation -4 9 )  }
+			vertices:
+				{ [ 1  1] [ -1  1 ]
+				[ -1 -1 ] [  1 -1] } 
+			) // polygon
+			} // components
+		) // button
+	AddBall: ( Button
+		eventId: 3004
+		selectName: 5
+		components: {
+			( Polygon
+			color: purple
+			transform: { (Translation -1.5 9 )  }
+			vertices:
+				{ [ 1  1] [ -1  1 ]
+				[ -1 -1 ] [  1 -1] } 
+			) // polygon
+			} // components
+		) // button
+	(Polygon
+	vertices:
+		{ [ 9  9.8 ] [ 3  9.8 ]
+				[ 3 9 ] [  9 9  ] } 
+
+	)
+	gravitySlider: (
+	Polygon
+	color: purple
+	vertices:
+		{ [ 3.3  9.9 ] [ 2.7  9.9 ]
+		[ 2.7 9.6] [ 3 9.2] [ 3.3 9.6 ] } 
+	)
+	(Polygon
+	vertices:
+		{ [ 9  8.8 ] [ 3  8.8 ]
+				[ 3 8 ] [  9 8  ] } 
+
+	)
+	speedSlider: (
+	Polygon
+	color: purple
+	vertices:
+		{ [ 3.3  8.9 ] [ 2.7  8.9 ]
+		[ 2.7 8.6] [ 3 8.2] [ 3.3 8.6 ] } 
+	)
+	Basket: ( Polygon
+	transform: { (Translation 0 -8) }
+	vertices:
+		{ [ 2.5  1]  [2 0] [-2 0] [-2 0] [ -2.5  1 ]
+		} 
+	)
+	score:
+    ( NumericReadout
+    format: "####"
+    inheritColor: 1
+    transform: { ( Translation 8 7 ) ( Scale 0.11 ) }
+    ) // score
+	#include "Pegs.epp"
+	( AsciiText selectName: 502 transform: { ( Translation -9.5 9 )  } color: white text: "Drop" )
+	( AsciiText selectName: 502 transform: { ( Translation -7 9 )  } color: white text: "Color" )
+	( AsciiText selectName: 502 transform: { ( Translation -4.5 9 )  } color: white text: "Reset" )
+	( AsciiText selectName: 502 transform: { ( Translation -2.4 9 )  } color: white text: "Add Ball" )
+	( AsciiText selectName: 502 transform: { ( Translation 1 9.5 )  } color: white text: "Gravity" )
+	( AsciiText selectName: 502 transform: { ( Translation 1 8.5 )  } color: white text: "Bounce" )
+	( AsciiText selectName: 502 transform: { ( Translation 6.5 7 )  } color: white text: "Score" )
+	}
+	)
+	}
+	
+	)	

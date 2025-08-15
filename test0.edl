@@ -1,0 +1,426 @@
+#line 1 "C:/Apps/2025/mixr-examples/challenge3/station.epp"
+( Station
+components: {
+#line 3 "C:/Apps/2025/mixr-examples/challenge3/station.epp"
+#line 1 "GameDisplay.epp"
+GameDisplay: ( GameDisplay
+	normalFont: font01
+	fonts: {
+    font01: ( BitmapFont
+                fontPosition: [ -9.5 9.5 ]
+                fontWidth: 0.462
+                fontHeight: 0.798
+                bitmapWidth: 11
+                bitmapHeight: 19
+                characterSpacing: 0.462
+                lineSpacing: 0.798
+                path: "../../MIXR-DATA/FONTs/11x19/normal/"
+            )
+  }
+	colorTable: {
+    black: ( rgba 0 0 0 )
+    red: ( rgb 1 0 0 )
+    green: ( rgb 0 1 0 )
+    yellow: ( rgb 1 1 0 )
+    blue: ( rgb 0 0 1 )
+    magenta: ( rgb 1 0 1 )
+    cyan: ( rgb 0 1 1 )
+    white: ( rgb 1 1 1 )
+	purple: (rgb .5 0 .5)
+	pastelMagenta: (rgb .95 .61 .73)
+  }
+
+	 textures: {
+  plinkoBackground: ( BitmapTexture width: 512 height: 256 path:  "../../mixr-data/textures/"  file: "plinkoBackground.bmp" )
+
+  }
+
+	left: -10
+	right: 10
+	bottom: -10
+	top: 10
+
+	vpWidth: 1000
+	vpHeight: 1000
+
+	page: p1
+	pages: {
+	p1: (Page
+	pagingEvent: {p: p2}
+	components: {
+		(AnimatedPolygon
+		path: "./background"
+		startFrame: 1
+		totalFrames: 23
+		vertices:
+             { [ 10.5 10.5 ] [ -10.5 10.5 ]
+            [ -10.5 -10.5 ] [ 10.5 -10.5 ] }
+         texCoord: {
+                [ 1.0 1.0 ]
+                [ 0.0 1.0 ]
+                [ 0.0 0.0 ]
+                [ 1.0 0.0 ]
+            }
+		)
+
+		(Button
+		eventId: 3000
+		selectName: 1
+		components: {
+			( Polygon
+			color: magenta
+			transform: { ( Translation 5 -6 ) }
+			vertices:
+				{ [ 3.5 1.5] [ -3.5 1.5]
+				[ -3.5 -1.5] [ 3.5 -1.5] }
+			)
+			}
+		)
+		( AsciiText selectName: 502 transform: { ( Translation 4 -6.5 ) } color: blue text: "Play" )
+		}
+	)
+	p2: (Page
+	pagingEvent: {p: p1}
+	components: {
+	( Polygon
+	texture: plinkoBackground
+	vertices:
+             { [ 10.5 10.5 ] [ -10.5 10.5 ]
+            [ -10.5 -10.5 ] [ 10.5 -10.5 ] }
+			texture: plinkoBackground
+                      texCoord: {
+                [ 1.0 1.0 ]
+                [ 0.0 1.0 ]
+                [ 0.0 0.0 ]
+                [ 1.0 0.0 ]
+            }
+	)
+
+	DropBall: ( Button
+		eventId: 3001
+		selectName: 2
+		components: {
+			( Polygon
+			color: magenta
+			transform: { ( Translation -9 9 ) }
+			vertices:
+				{ [ 1 1] [ -1 1 ]
+				[ -1 -1 ] [ 1 -1] }
+			)
+			}
+		)
+	ChangeColor: ( Button
+		eventId: 3002
+		selectName: 3
+		components: {
+			( Polygon
+			color: red
+			transform: { ( Translation -6.5 9 ) }
+			vertices:
+				{ [ 1 1] [ -1 1 ]
+				[ -1 -1 ] [ 1 -1] }
+			)
+			}
+		)
+	Reset: ( Button
+		eventId: 3003
+		selectName: 4
+		components: {
+			( Polygon
+			color: pastelMagenta
+			transform: { ( Translation -4 9 ) }
+			vertices:
+				{ [ 1 1] [ -1 1 ]
+				[ -1 -1 ] [ 1 -1] }
+			)
+			}
+		)
+	AddBall: ( Button
+		eventId: 3004
+		selectName: 5
+		components: {
+			( Polygon
+			color: purple
+			transform: { (Translation -1.5 9 ) }
+			vertices:
+				{ [ 1 1] [ -1 1 ]
+				[ -1 -1 ] [ 1 -1] }
+			)
+			}
+		)
+	(Polygon
+	vertices:
+		{ [ 9 9.8 ] [ 3 9.8 ]
+				[ 3 9 ] [ 9 9 ] }
+
+	)
+	gravitySlider: (
+	Polygon
+	color: purple
+	vertices:
+		{ [ 3.3 9.9 ] [ 2.7 9.9 ]
+		[ 2.7 9.6] [ 3 9.2] [ 3.3 9.6 ] }
+	)
+	(Polygon
+	vertices:
+		{ [ 9 8.8 ] [ 3 8.8 ]
+				[ 3 8 ] [ 9 8 ] }
+
+	)
+	speedSlider: (
+	Polygon
+	color: purple
+	vertices:
+		{ [ 3.3 8.9 ] [ 2.7 8.9 ]
+		[ 2.7 8.6] [ 3 8.2] [ 3.3 8.6 ] }
+	)
+	Basket: ( Polygon
+	transform: { (Translation 0 -8) }
+	vertices:
+		{ [ 2.5 1] [2 0] [-2 0] [-2 0] [ -2.5 1 ]
+		}
+	)
+	score:
+    ( NumericReadout
+    format: "####"
+    inheritColor: 1
+    transform: { ( Translation 8 7 ) ( Scale 0.11 ) }
+    )
+#line 184 "GameDisplay.epp"
+#line 1 "Pegs.epp"
+
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation -8 5 ) }
+	filled: true
+
+)
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation -4 5 ) }
+	filled: true
+	)
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation 0 5 ) }
+	filled: true
+
+)
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation 4 5 ) }
+	filled: true
+
+)
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation 8 5 ) }
+	filled: true
+
+)
+
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation -6 1 ) }
+	filled: true
+)
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation -2 1) }
+	filled: true
+)
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation 2 1) }
+	filled: true
+)
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation 6 1) }
+	filled: true
+)
+
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation -8 -3 ) }
+	filled: true
+	vertices:
+		{ [ 2.5 1] [ -2.5 1 ]
+		[ -2.5 -1 ] [ 2.5 -1] }
+)
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation -4 -3 ) }
+	filled: true
+	vertices:
+		{ [ 2.5 1] [ -2.5 1 ]
+		[ -2.5 -1 ] [ 2.5 -1] }
+)
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation 0 -3 ) }
+	filled: true
+	vertices:
+		{ [ 2.5 1] [ -2.5 1 ]
+		[ -2.5 -1 ] [ 2.5 -1] }
+)
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation 4 -3 ) }
+	filled: true
+	vertices:
+		{ [ 2.5 1] [ -2.5 1 ]
+		[ -2.5 -1 ] [ 2.5 -1] }
+)
+( Circle
+	radius: .3
+	slices: 32
+	transform: { ( Translation 8 -3 ) }
+	filled: true
+	vertices:
+		{ [ 2.5 1] [ -2.5 1 ]
+		[ -2.5 -1 ] [ 2.5 -1] }
+)
+#line 185 "GameDisplay.epp"
+	( AsciiText selectName: 502 transform: { ( Translation -9.5 9 ) } color: white text: "Drop" )
+	( AsciiText selectName: 502 transform: { ( Translation -7 9 ) } color: white text: "Color" )
+	( AsciiText selectName: 502 transform: { ( Translation -4.5 9 ) } color: white text: "Reset" )
+	( AsciiText selectName: 502 transform: { ( Translation -2.4 9 ) } color: white text: "Add Ball" )
+	( AsciiText selectName: 502 transform: { ( Translation 1 9.5 ) } color: white text: "Gravity" )
+	( AsciiText selectName: 502 transform: { ( Translation 1 8.5 ) } color: white text: "Bounce" )
+	( AsciiText selectName: 502 transform: { ( Translation 6.5 7 ) } color: white text: "Score" )
+	}
+	)
+	}
+
+	)
+#line 4 "C:/Apps/2025/mixr-examples/challenge3/station.epp"
+#line 1 "GameController.epp"
+controller: (GameController
+#line 2 "GameController.epp"
+#line 1 "Pegs1.epp"
+pegs: {
+	( Circle
+		radius: .3
+		slices: 32
+		filled: true
+		vertices:
+			{ [ -8 5] }
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ -4 5] }
+		filled: true
+		)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 0 5] }
+		filled: true
+		)
+		( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 4 5] }
+		filled: true
+		)
+		( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 8 5] }
+		filled: true
+		)
+
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ -6 1] }
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ -2 1] }
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 2 1] }
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 6 1] }
+		filled: true
+	)
+
+
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ -8 -3 ] }
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ -4 -3 ] }
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ -0 -3 ] }
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 4 -3 ] }
+		filled: true
+	)
+	( Circle
+		radius: .3
+		slices: 32
+		vertices:
+			{ [ 8 -3 ] }
+		filled: true
+	)
+}
+#line 3 "GameController.epp"
+)
+#line 5 "C:/Apps/2025/mixr-examples/challenge3/station.epp"
+
+
+	}
+
+
+)

@@ -1,6 +1,6 @@
 # Plinko Simulation – C++ (Mixr Framework)
 
-An interactive Plinko game built in **C++** with the **Mixr** framework, featuring a **custom physics engine** for realistic ball movement and collisions. Designed to showcase advanced simulation logic, performance optimization, and engaging gameplay.
+An interactive Plinko game built in **C++** with the **Mixr** framework, featuring custom collision logic for ball movement, pegs, and scoring.
 
 ---
 
@@ -9,7 +9,7 @@ An interactive Plinko game built in **C++** with the **Mixr** framework, featuri
 - **Custom Physics Engine**  
   - Real-time collision detection between balls and pegs.  
   - Ball-to-ball interaction with energy loss, bounce coefficients, and gravity effects.  
-  - Stable simulations even with multiple simultaneous objects.  
+  - Supports multiple simultaneous moving balls.  
 - **Animated Loading Screen** – Cycles through background images for a smooth GIF-like intro.  
 - **Customizable Gameplay** – Change ball color, gravity, and bounce parameters via sliders.  
 - **Score Tracking** – Automatically updates in real time.  
@@ -24,7 +24,7 @@ An interactive Plinko game built in **C++** with the **Mixr** framework, featuri
   - Continuous collision detection to prevent tunneling at high speeds.  
   - Adjustable gravity and restitution values.  
 - **Rendering:**  
-  - Optimized background animation loop for minimal frame drops.  
+  - Animated background loop and event-driven controls.  
   - Event-driven UI updates for sliders, buttons, and scores.  
 
 ---
